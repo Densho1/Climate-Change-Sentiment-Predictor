@@ -24,25 +24,31 @@ This project is developed by:
 
 ## Problem Statement
 
-This project aims to assist in answering the following question: "How sympathetic can we expect the general populace to be with regards to climate change?"
+This project aims to lay the groundwork towards answering the following question: "How sympathetic can we expect the general populace to be with regards to climate change?"
 
-In particular, we seek to answer the following questions:
-- How much awareness do people have of climate change?
-- How does the amount of pro-climate change sentiment compare to anti-climate change sentiment?
+In particular, the research group seeks to do the following:
+- Analyze the 
+
 
 In order to make the first steps towards fully answering the aforementioned questions, we first need a way to review the data needed to construct a satisfying answer. As of May 2022, 500,000,000 tweets are posted every day (Internet Live Stats, 2022), and even if less that 1 percent of that is related to climate change, a small group of humans will take a while reviewing hundreds of thousands of data, so we need to have a machine that assists us in our endeavor.
 
+
+
 ## Methodology
 
-The machine that we will develop will be made to learn how to classify climate-change related tweets to the following categories: "positive", "negative", and "neutral". (See the definition of terms for what each of the labels mean)
+The machine that we have developd was be made to learn how to classify climate-change related tweets to the following categories: "positive", "negative", and "neutral". (See the definition of terms for what each of the labels mean)
 
-Each tweet in the learning data that will be used by the machine will be individually labeled by the research group according to their stance and sentiment on climate change; the Climate Sentiment on Twitter (Guzman, 2020) dataset will be reviewed for this purpose. This dataset is a raw database of 396 tweets from January 2020 to December 2020. While the distribution of sentiments of this database is yet to be known and will require reviewing by the group in order to be of use to the project, the data is small and recent enough to be utilized for this project.
+Each tweet in the learning data that was used by the machine was individually labeled by the research group according to their stance and sentiment on climate change; the Climate Sentiment on Twitter (Guzman, 2020) dataset was reviewed for this purpose. This dataset is a raw database of 396 tweets from January 2020 to December 2020. The data from this dataset is just large and recent enough to be utilized for this project.
 
-The data will be preprocessed by adding a new `Sympathy?` column that indicates whether a tweet is sympathetic to climate change or not; then the group will manually add the appropriate value for each tweet ("Yes" if the tweet is sympathetic to climate change, "No" otherwise). Instances of null rows will be removed, and `TfidfVectorizer` will be used to convert text data to numeric data. The tweet content will be cleaned of its URLs, hashtags, mentions, emojis, smileys, and stop words (e.g. "a", "the", "this"); this is so that the machine can better process and properly learn the necessary information from the dataset.
+The data was preprocessed by adding a new `Sympathy?` column that indicates whether a tweet is sympathetic to climate change or not; then the group manually added the appropriate value for each tweet ("Yes" if the tweet is sympathetic to climate change, "No" otherwise). Instances of null rows were removed, and `TfidfVectorizer` was then used to convert text data to numeric data. The tweet content will be cleaned of its hashtags, mentions, emojis, smileys, and stop words (e.g. "a", "the", "this"); this is so that the machine can better process and properly learn the necessary information from the dataset.
 
-The Logistic Regression model will be used in this project; according to a prior analysis (Kim, 2022) on a similar dataset (Qian, 2019), this model has been observed to perform best particularly in distinguishing tweets on climate change to appropriate sentiment labels.
+> removed "cleaned URLs due to likely presence of amp links according to data gathered on the training dataset"
+
+The Logistic Regression model, particularly the Limited-Memory Broyden–Fletcher–Goldfarb–Shanno (LBFGS) solver, will be used in this project. According to a prior analysis (Kim, 2022) on a similar dataset (Qian, 2019), this model has been observed to perform best particularly in distinguishing tweets on climate change to appropriate sentiment labels. Due to the relatively low volume of the dataset, the model can achieve a minimum of ~60% accuracy and a maximum of ~74% accuracy.
 
 After the machine has been developed, tweets related to climate change will be scalped from twitter and fed to the machine. The resulting labeled data will then be explored in order to answer the main problem faced by this project.
+
+1059 tweets related to climate change between May 2016 to May 2017 and 1002 tweets related to climate change between May 2021 to May 2022 were then scalped from twitter for the machine to label.
 
 > expansion on the above paragraph is required; what kinda statistical analysis will we be doing? 
 
