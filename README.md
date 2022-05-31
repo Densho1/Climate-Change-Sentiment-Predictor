@@ -12,9 +12,9 @@ This project is developed by:
 
 1. **Sympathetic**: _Adjective describing someone who talks and acts for a particular topic/sentiment: in this study, someone who is aware of, and/or acts in a way that makes others be positively aware of, climate change._
 2. **"Positive"**: _Label of climate change tweets that attempt to bring positive awareness to climate change and their causes through information or persuation. In essence, this label is attached to tweets aligned with the sentiment that humans are the cause of climate change and that it is an urgent issue. This label also includes news on climate change._
-    > Indiscriminately bang nilabel ang true and fake news under this label?
+    <!-- Indiscriminately bang nilabel ang true and fake news under this label? -->
 3. **"Negative"**: _Label of climate change tweets that negatively bring awareness to climate change and their causes, e.g. deniers of climate change or stating that the issue is out of our control thus dissuading action._
-    > Ininclude ba ang fake news sa label na ito?
+    <!-- Ininclude ba ang fake news sa label na ito? -->
 4. **"Neutral"**: _Label of climate change tweets that simply express awareness of the issue but not attempt to inform, persuade nor dissuade people from it are labeled "neutral"._
 
 ## Problem Statement
@@ -40,7 +40,7 @@ In order to make the first steps towards fully answering the main question, we f
 
 The machine that we have developd was be made to learn how to classify climate-change related tweets to the following categories: "positive", "negative", and "neutral". (See the definition of terms for what each of the labels mean)
 
-Each tweet in the learning data that was used by the machine was individually labeled by the research group according to their stance and sentiment on climate change; the Climate Sentiment on Twitter (Guzman, 2020) dataset was reviewed for this purpose. This dataset is a raw database of 396 tweets from January 2020 to December 2020. The data from this dataset is just large and recent enough to be utilized for this project.
+Each tweet in the learning data that was used by the machine was individually labeled by the research group according to their stance and sentiment on climate change; the [Climate Sentiment on Twitter](https://www.kaggle.com/datasets/joseguzman/climate-sentiment-in-twitter?resource=download) (Guzman, 2020) dataset was reviewed for this purpose. This dataset is a raw database of 396 tweets from January 2020 to December 2020. The data from this dataset is just large and recent enough to be utilized for this project.
 
 The data was preprocessed by adding a new `Sympathy?` column that indicates whether a tweet is sympathetic to climate change or not; then the group manually added the appropriate value for each tweet ("Yes" if the tweet is sympathetic to climate change, "No" otherwise). Instances of null rows were removed, and `TfidfVectorizer` was then used to convert text data to numeric data. The tweet content will be cleaned of its URLs, hashtags, mentions, emojis, smileys, and stop words (e.g. "a", "the", "this" , "amp", which is the HTML code of the ampersand symbol, `&amp`); this is so that the machine can better process and properly learn the necessary information from the dataset. Exploratory data analyses on the sentiment composition and word occurences were also performed on this dataset to have an idea of what the machine learns from the tweets.
 
@@ -50,9 +50,11 @@ After the machine has been developed, tweets related to climate change was scalp
 
 Specifically, 1059 tweets related to climate change between May 2016 to May 2017 and 1002 tweets related to climate change between May 2021 to May 2022 were then scalped from twitter for the machine to label. Exploratory data analysis is performed on the resulting labeled data to have an idea on what the sentiments of the tweets are like.
 
-Finally, a chi-squared test is performed on the sentiment counts of the results of the two datasets labeled by the machine to determine whether to reject the null hypothesis or not, with the `alpha = 1 - model accuracy`.
+Finally, a chi-squared test is performed on the sentiment counts of the results of the two datasets labeled by the machine to determine whether to reject the null hypothesis or not, with `alpha = 1 - model accuracy`.
 
 ## Results and Discussion
+
+### Exploration of Training Dataset
 
 The composition of the dataset used to train the machine can be observed in the following graph:
 
@@ -91,8 +93,9 @@ _Figure 5. The same bar graph as Figure 2, but excluding the top three words._
 
 _Figure 6. Wordcloud of the positive tweets of the training dataset._
 
-The wordcloud of positive tweets shows that words associated with climate change sympathy are that of urgency, science, time, and  recognition of the issue as a negative one. Figure 6 thus implies that sympathetic tweets talk about the urgency of solving the issue of climate change. 
-Notable words that appear in the wordcloud are "reduc[e]" and "emiss[ions]", "caus[e]", "couldfight", and "human".
+The wordcloud of positive tweets shows that words associated with climate change sympathy are that of urgency, science, time, and  recognition of the issue as a negative one. Figure 6 thus implies that sympathetic tweets talk about the urgency of solving the issue of climate change.
+
+Notable words that appear in the wordcloud are "reduc[e]" and "emiss[ions]", "caus[e]", "couldfight", and "human". These words imply that climate change sympathetic tweets show optimism and recognition of the cause of climate change, as well as suggest possible solutions for the issue.
 
 ![](report_assets/test_dataset_occurrences_neutral_x3.png)
 
@@ -104,7 +107,7 @@ _Figure 8. Wordcloud of the neutral tweets of the training dataset._
 
 The wordcloud of neutral tweets shows that words associated with climate change neutrality are associated with concern for other global events and common causes of global warming (particularly fossil fuels). This implies that the neutral climate change sentiment is associated with general awareness of the issue.
 
-Notable words that appear in the wordcloud are "thunberg", "local", "coronavirus" and "new".
+Notable words that appear in the wordcloud are "thunberg", "local", "coronavirus" and "new". Greta Thunberg is a Swedish climate change activist that grew in popularity due to her initiative and age. (BBC, 2019) The dataset is composed of tweets from 2020, which was the time when the Coronavirus pandemic struck the world.
 
 ![](report_assets/test_dataset_occurrences_negative_x3.png)
 
@@ -112,9 +115,15 @@ _Figure 9. The same bar graph as Figure 4, but excluding the top three words._
 
 ![](report_assets/test_dataset_wordcloud_negative.png)
 
-_Figure 10. Wordcloud of the neutral tweets of the training dataset._
+_Figure 10. Wordcloud of the negative tweets of the training dataset._
 
+The wordcloud of apathetic tweets shows that words associated with climate change apathy are associated with concerns regarding the truth of climate change and its causes. This implies that tweets apathetic to climate change express belief in the facts that proves climate change is the cause of natural occurrences.
 
+Notable words include "milankovich", "boomer", "hoax", "old", "season", and "cycle". The Milankovich cycle relates the effects of the earth's position, rotate and orientation with the changes in climate. "Boomer" is a term used to refer to the Baby Boomer generation, born during the post-WWII baby boom, and are often prone to misinformation from fake news. (Brashier & Schacter, 2020) This implies that climate change-apathetic tweets express, or are possibly caused by, misinformation.
+
+### Exploration of Labeled Dataset from 2016-2017
+
+The composition of the dataset
 
 ## Conclusion
 
@@ -131,6 +140,11 @@ Guzman, J. (2020). 2020 Climate Sentiment on Twitter. Kaggle. Retrieved from htt
 Qian, E. (2019, November 13). Twitter Climate Change Sentiment Dataset. Kaggle. Retrieved from https://www.kaggle.com/datasets/edqian/twitter-climate-change-sentiment-dataset
 
 Kim, R. (2022, April 5). Twitter Climate Change Analysis. Kaggle. Retrieved from https://www.kaggle.com/code/roellekim/twitter-climate-change-sentiment-analysis
+
+BBC. (2019, April 23). Climate change activist Greta Thunberg: 'Listen to climate scientists' (Video). _BBC News._ Retrieved from https://www.bbc.com/news/av/uk-48018034
+
+Brashier, N. M. & Schacter, D. L. (2020, May 19). Aging in an Era of Fake News
+. _Current Directions in Psychological Science, 29(3)._ doi:10.1177/0963721420915872
 
 <!--
 
