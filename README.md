@@ -44,7 +44,7 @@ Each tweet in the learning data that was used by the machine was individually la
 
 The data was preprocessed by adding a new `Sympathy?` column that indicates whether a tweet is sympathetic to climate change or not; then the group manually added the appropriate value for each tweet ("Yes" if the tweet is sympathetic to climate change, "No" otherwise). Instances of null rows were removed, and `TfidfVectorizer` was then used to convert text data to numeric data. The tweet content will be cleaned of its URLs, hashtags, mentions, emojis, smileys, and stop words (e.g. "a", "the", "this" , "amp", which is the HTML code of the ampersand symbol, `&amp`); this is so that the machine can better process and properly learn the necessary information from the dataset. Exploratory data analyses on the sentiment composition and word occurences were also performed on this dataset to have an idea of what the machine learns from the tweets.
 
-The Logistic Regression model, particularly the Limited-Memory Broyden–Fletcher–Goldfarb–Shanno (LBFGS) solver, will be used in this project. According to a prior analysis (Kim, 2022) on a similar dataset (Qian, 2019), this model has been observed to perform best particularly in distinguishing tweets on climate change to appropriate sentiment labels. Due to the relatively low volume of the dataset, the model can achieve a maximum of only ~73% accuracy.
+The Logistic Regression model, particularly the Limited-Memory Broyden–Fletcher–Goldfarb–Shanno (LBFGS) solver, will be used in this project. According to a prior analysis (Kim, 2022) on a similar dataset (Qian, 2019), this model has been observed to perform best particularly in distinguishing tweets on climate change to appropriate sentiment labels.
 
 After the machine has been developed, tweets related to climate change was scalped from twitter and fed to the machine. The resulting labeled data was then explored in order to answer the main problem faced by this project.
 
@@ -54,9 +54,73 @@ Finally, a chi-squared test is performed on the sentiment counts of the results 
 
 ## Results and Discussion
 
+The composition of the dataset used to train the machine can be observed in the following graph:
+
+![](report_assets/test_dataset_composition.png)
+_Figure 1. Sentiment Composition of the dataset used to train the machine._
+
+Almost half of the training dataset is composed of positive tweets, while the remaining half is composed of a roughly equal number of neutral and negative tweets, with negative tweets having the least number in the dataset.
+
+When the dataset was cleaned and tokenized, the word occurrences and compositions of tweets of respective sentiments can then be determined.
+
+The following bar graphs show the occurrences of the top 30 most occuring words among tweets of the respective sentiment:
+
+![](report_assets/test_dataset_occurrences_positive.png)
+
+_Figure 2. Bar graph of word occurrences in the positive tweets of the dataset used to train the machine._
+
+The words shown seem incomplete because they are determined by the tokenizer to be the root word, e.g. "chang" can mean "changing", "change", "changes", etc.
+
+![](report_assets/test_dataset_occurrences_neutral.png)
+
+_Figure 3. Bar graph of word occurrences in the neutral tweets of the dataset used to train the machine._
+
+![](report_assets/test_dataset_occurrences_negative.png)
+
+_Figure 4. Bar graph of word occurrences in the negative tweets of the dataset used to train the machine._
+
+Accross all sentiments, the most occurring words are "climat", "chang" and "global"; this can be attributed to the reason that the data was scalped from search results made with these keywords.
+
+Hence, we now take a look at the occurrences and wordclouds of the most occurring words, excluding the three most occurring words, "climat", "chang", and "global". The wordclouds are constructed based on the data the bar graphs use, so the reduced bar graphs and wordclouds will be shown consecutively.
+
+![](report_assets/test_dataset_occurrences_positive_x3.png)
+
+_Figure 5. The same bar graph as Figure 2, but excluding the top three words._ 
+
+![](report_assets/test_dataset_wordcloud_positive.png)
+
+_Figure 6. Wordcloud of the positive tweets of the training dataset._
+
+The wordcloud of positive tweets shows that words associated with climate change sympathy are that of urgency, science, time, and  recognition of the issue as a negative one. Figure 6 thus implies that sympathetic tweets talk about the urgency of solving the issue of climate change. 
+Notable words that appear in the wordcloud are "reduc[e]" and "emiss[ions]", "caus[e]", "couldfight", and "human".
+
+![](report_assets/test_dataset_occurrences_neutral_x3.png)
+
+_Figure 7. The same bar graph as Figure 3, but excluding the top three words._ 
+
+![](report_assets/test_dataset_wordcloud_neutral.png)
+
+_Figure 8. Wordcloud of the neutral tweets of the training dataset._
+
+The wordcloud of neutral tweets shows that words associated with climate change neutrality are associated with concern for other global events and common causes of global warming (particularly fossil fuels). This implies that the neutral climate change sentiment is associated with general awareness of the issue.
+
+Notable words that appear in the wordcloud are "thunberg", "local", "coronavirus" and "new".
+
+![](report_assets/test_dataset_occurrences_negative_x3.png)
+
+_Figure 9. The same bar graph as Figure 4, but excluding the top three words._ 
+
+![](report_assets/test_dataset_wordcloud_negative.png)
+
+_Figure 10. Wordcloud of the neutral tweets of the training dataset._
+
 
 
 ## Conclusion
+
+This study has determined that, in the past half decade, there has been a significant positive change in sentiment on Climate Change.
+
+The training data used for this project was too small to be truly certain of the change in climate change sentiment. It is recommended that, in future replications of this project, the data is larger, and that the data has equal distributions among the positive, neutral, and negative tweets.
 
 ## References
 
@@ -68,6 +132,10 @@ Qian, E. (2019, November 13). Twitter Climate Change Sentiment Dataset. Kaggle. 
 
 Kim, R. (2022, April 5). Twitter Climate Change Analysis. Kaggle. Retrieved from https://www.kaggle.com/code/roellekim/twitter-climate-change-sentiment-analysis
 
+<!--
+
 ## Unreviewed
 
 Patronella, A. M. (2021). Covering Climate Change: A Sentiment Analysis of Major Newspaper Articles from 2010 - 2020. _Inquiries Journal, 13(9)_. Archived 2022, May 11, 11:43 AM GMT: https://web.archive.org/web/20220511114350/http://www.inquiriesjournal.com/articles/1910/covering-climate-change-a-sentiment-analysis-of-major-newspaper-articles-from-2010--2020
+
+-->
