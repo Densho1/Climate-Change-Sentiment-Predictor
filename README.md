@@ -8,11 +8,6 @@ This project is developed by:
 - Roxas, Dennis Christian
 - Surara, Ron Christian
 
-
-## Review of Related Literature
-
-> content to be added
-
 ## Definition of Terms
 
 1. **Sympathetic**: _Adjective describing someone who talks and acts for a particular topic/sentiment: in this study, someone who is aware of, and/or acts in a way that makes others be positively aware of, climate change._
@@ -27,12 +22,19 @@ This project is developed by:
 This project aims to lay the groundwork towards answering the following question: "How sympathetic can we expect the general populace to be with regards to climate change?"
 
 In particular, the research group seeks to do the following:
-- Analyze the 
+1. Perform Exploratory Data Analysis (EDA) on the composition and word occurences of the data set from which the machine will learn from,
+2. Choose the best Logistic Regression model to use,
+3. Utilize the learned machine to label climate change related tweets from May 2016 to May 2017, and from May 2021 to May 2022.
+4. Perform EDA on the composition and word occurences of the resulting labeled data, and
+5. Determine if there is a significant change in sentiment on climate change over the past half decade.
 
+The null hypothesis is determined to be that "there is no significant change in the twitter sentiment on climate change from 2016-2017 and that of 2021-2022."
 
-In order to make the first steps towards fully answering the aforementioned questions, we first need a way to review the data needed to construct a satisfying answer. As of May 2022, 500,000,000 tweets are posted every day (Internet Live Stats, 2022), and even if less that 1 percent of that is related to climate change, a small group of humans will take a while reviewing hundreds of thousands of data, so we need to have a machine that assists us in our endeavor.
+The alternative hypothesis is determined to be that "there is a significant change in the twitter sentiment on climate change from 2016-2017 and that of 2021-2022."
 
-
+<!--
+In order to make the first steps towards fully answering the main question, we first need a way to review the data needed to construct a satisfying answer. As of May 2022, 500,000,000 tweets are posted every day (Internet Live Stats, 2022), and even if less that 1 percent of that is related to climate change, a small group of humans will take a while reviewing hundreds of thousands of data, so we need to have a machine that assists us in our endeavor.
+-->
 
 ## Methodology
 
@@ -40,19 +42,21 @@ The machine that we have developd was be made to learn how to classify climate-c
 
 Each tweet in the learning data that was used by the machine was individually labeled by the research group according to their stance and sentiment on climate change; the Climate Sentiment on Twitter (Guzman, 2020) dataset was reviewed for this purpose. This dataset is a raw database of 396 tweets from January 2020 to December 2020. The data from this dataset is just large and recent enough to be utilized for this project.
 
-The data was preprocessed by adding a new `Sympathy?` column that indicates whether a tweet is sympathetic to climate change or not; then the group manually added the appropriate value for each tweet ("Yes" if the tweet is sympathetic to climate change, "No" otherwise). Instances of null rows were removed, and `TfidfVectorizer` was then used to convert text data to numeric data. The tweet content will be cleaned of its hashtags, mentions, emojis, smileys, and stop words (e.g. "a", "the", "this"); this is so that the machine can better process and properly learn the necessary information from the dataset.
+The data was preprocessed by adding a new `Sympathy?` column that indicates whether a tweet is sympathetic to climate change or not; then the group manually added the appropriate value for each tweet ("Yes" if the tweet is sympathetic to climate change, "No" otherwise). Instances of null rows were removed, and `TfidfVectorizer` was then used to convert text data to numeric data. The tweet content will be cleaned of its URLs, hashtags, mentions, emojis, smileys, and stop words (e.g. "a", "the", "this" , "amp", which is the HTML code of the ampersand symbol, `&amp`); this is so that the machine can better process and properly learn the necessary information from the dataset. Exploratory data analyses on the sentiment composition and word occurences were also performed on this dataset to have an idea of what the machine learns from the tweets.
 
-> removed "cleaned URLs due to likely presence of amp links according to data gathered on the training dataset"
+The Logistic Regression model, particularly the Limited-Memory Broyden–Fletcher–Goldfarb–Shanno (LBFGS) solver, will be used in this project. According to a prior analysis (Kim, 2022) on a similar dataset (Qian, 2019), this model has been observed to perform best particularly in distinguishing tweets on climate change to appropriate sentiment labels. Due to the relatively low volume of the dataset, the model can achieve a maximum of only ~73% accuracy.
 
-The Logistic Regression model, particularly the Limited-Memory Broyden–Fletcher–Goldfarb–Shanno (LBFGS) solver, will be used in this project. According to a prior analysis (Kim, 2022) on a similar dataset (Qian, 2019), this model has been observed to perform best particularly in distinguishing tweets on climate change to appropriate sentiment labels. Due to the relatively low volume of the dataset, the model can achieve a minimum of ~60% accuracy and a maximum of ~74% accuracy.
+After the machine has been developed, tweets related to climate change was scalped from twitter and fed to the machine. The resulting labeled data was then explored in order to answer the main problem faced by this project.
 
-After the machine has been developed, tweets related to climate change will be scalped from twitter and fed to the machine. The resulting labeled data will then be explored in order to answer the main problem faced by this project.
+Specifically, 1059 tweets related to climate change between May 2016 to May 2017 and 1002 tweets related to climate change between May 2021 to May 2022 were then scalped from twitter for the machine to label. Exploratory data analysis is performed on the resulting labeled data to have an idea on what the sentiments of the tweets are like.
 
-1059 tweets related to climate change between May 2016 to May 2017 and 1002 tweets related to climate change between May 2021 to May 2022 were then scalped from twitter for the machine to label.
+Finally, a chi-squared test is performed on the sentiment counts of the results of the two datasets labeled by the machine to determine whether to reject the null hypothesis or not, with the `alpha = 1 - model accuracy`.
 
-> expansion on the above paragraph is required; what kinda statistical analysis will we be doing? 
+## Results and Discussion
 
-## Communication and Visualization of Results
+
+
+## Conclusion
 
 ## References
 
