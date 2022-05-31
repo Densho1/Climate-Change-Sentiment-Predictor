@@ -723,3 +723,9 @@ print(f"Alpha: %f" % (alpha))
 print(f"\np value: %f" % (p_value))
 print(f"Reject null hypothesis? (P-value < alpha?): {p_value < alpha}")
 ```
+
+### XVI. [Github Repository Archive Link](https://github.com/Aikiro42/Climate-Change-Sentiment-Predictor-Archive)
+
+```
+https://github.com/Aikiro42/Climate-Change-Sentiment-Predictor-Archive
+```
