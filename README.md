@@ -121,9 +121,15 @@ The wordcloud of apathetic tweets shows that words associated with climate chang
 
 Notable words include "milankovich", "boomer", "hoax", "old", "season", and "cycle". The Milankovich cycle relates the effects of the earth's position, rotate and orientation with the changes in climate. "Boomer" is a term used to refer to the Baby Boomer generation, born during the post-WWII baby boom, and are often prone to misinformation from fake news. (Brashier & Schacter, 2020) This implies that climate change-apathetic tweets express, or are possibly caused by, misinformation.
 
+### Model Accuracy Results
+
+To 
+
 ### Exploration of Labeled Dataset from 2016-2017
 
-The composition of the dataset
+
+
+The composition of the dataset labeled by the mac
 
 ## Conclusion
 
